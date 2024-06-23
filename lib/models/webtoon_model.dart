@@ -1,1 +1,3 @@
-class WebtoonModel {}
+class WebtoonModel {
+  String Title;
+}
