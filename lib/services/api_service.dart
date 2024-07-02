@@ -15,8 +15,10 @@ class ApiService {
       //List<dynamic>은 삭제해도 기능에 지장없음
       final List<dynamic> webtoons = jsonDecode(response.body);
       for (var webtoon in webtoons) {
-        webtoonInstances.add(WebtoonModel.fromJson(webtoon));
+        final instance = WebtoonModel.fromJson(webtoon);
+        webtoonInstances.add(instance);
       }
+
       return webtoonInstances;
     }
     throw Error();
