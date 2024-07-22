@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/detail_screen.dart';
 
 class Webtoon extends StatelessWidget {
   final String title, thumb, id;
@@ -11,34 +12,49 @@ class Webtoon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 250,
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 15,
-                    offset: const Offset(10, 10),
-                    color: Colors.black.withOpacity(0.5))
-              ]),
-          child: Image.network(
-            thumb,
-            headers: const {
-              'Referer': 'https://comic.naver.com',
-            },
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailScreen(
+              title: title,
+              thumb: thumb,
+              id: id,
+            ),
+            fullscreenDialog: true,
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          title,
-          style: const TextStyle(fontSize: 22),
-        )
-      ],
+        );
+      },
+      child: Column(
+        children: [
+          Container(
+            width: 250,
+            clipBehavior: Clip.hardEdge,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 15,
+                      offset: const Offset(10, 10),
+                      color: Colors.black.withOpacity(0.5))
+                ]),
+            child: Image.network(
+              thumb,
+              headers: const {
+                'Referer': 'https://comic.naver.com',
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 22),
+          )
+        ],
+      ),
     );
   }
 }
