@@ -97,7 +97,10 @@ class _DetailScreenState extends State<DetailScreen> {
               }
               return const Text("...");
             },
-          )
+          ),
+          const SizedBox(
+            height: 50,
+          ),
         ],
       ),
     );
